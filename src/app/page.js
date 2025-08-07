@@ -11,12 +11,7 @@ const page = () => {
   return (
     <div>
       <DashboardLayoutBranding/>
-       <Container maxWidth="xl" sx={{ mt: 3 }}>
-      <StatsCardsSection />
-      <QuickActions />
-      <ChartsSection />
-      <RecentAppointmentsTable />
-    </Container>
+       
     </div>
   )
 }
