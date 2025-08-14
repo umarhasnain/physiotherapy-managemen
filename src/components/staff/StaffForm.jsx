@@ -14,6 +14,8 @@ import {
 export default function StaffForm({ onSubmit, initialData, onCancel }) {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
+    password: "",
     role: "Select Role",
     department: "Select Department",
     contact: "",
@@ -62,6 +64,8 @@ export default function StaffForm({ onSubmit, initialData, onCancel }) {
     onSubmit(formData);
     setFormData({
       name: "",
+      email: "",
+      password: "",
       role: "Select Role",
       department: "Select Department",
       contact: "",
@@ -95,6 +99,32 @@ export default function StaffForm({ onSubmit, initialData, onCancel }) {
                 value={formData.name}
                 onChange={handleChange}
                 required
+              />
+            </Grid>
+
+            {/* Email */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                type="email"
+                label="Email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </Grid>
+
+            {/* Password */}
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                type="password"
+                label="Password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required={!initialData} // edit karte waqt password optional
               />
             </Grid>
 

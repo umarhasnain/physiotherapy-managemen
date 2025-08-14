@@ -6,12 +6,14 @@ import StatsCardsSection from "@/components/StatsCardsSection";
 import QuickActions from "@/components/QuickActions";
 import ChartsSection from "@/components/ChartsSection";
 import RecentAppointmentsTable from "@/components/RecentAppointmentsTable";
+import Login from './(pages)/login/page';
+// import LoginPage from './(pages)/login/page';
 
 const page = () => {
   return (
     <div>
-      <DashboardLayoutBranding/>
-       
+      {/* <DashboardLayoutBranding/> */}
+       <Login/>
     </div>
   )
 }

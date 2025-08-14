@@ -8,6 +8,8 @@ export default function StaffList({ staff = [], onEdit, onDelete }) {
         <TableHead sx={{ background: "#0288d1" }}>
           <TableRow>
             <TableCell sx={{ color: "#fff" }}>Name</TableCell>
+            <TableCell sx={{ color: "#fff" }}>Email</TableCell>
+            <TableCell sx={{ color: "#fff" }}>Password</TableCell>
             <TableCell sx={{ color: "#fff" }}>Role</TableCell>
             <TableCell sx={{ color: "#fff" }}>Department</TableCell>
             <TableCell sx={{ color: "#fff" }}>Contact</TableCell>
@@ -22,6 +24,8 @@ export default function StaffList({ staff = [], onEdit, onDelete }) {
             staff.map((row, i) => (
               <TableRow key={i}>
                 <TableCell>{row.name}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <TableCell>{row.password}</TableCell>
                 <TableCell>{row.role}</TableCell>
                 <TableCell>{row.department}</TableCell>
                 <TableCell>{row.contact}</TableCell>
@@ -29,14 +33,31 @@ export default function StaffList({ staff = [], onEdit, onDelete }) {
                 <TableCell>{row.salary}</TableCell>
                 <TableCell>{row.status}</TableCell>
                 <TableCell>
-                  <Button size="small" variant="contained" onClick={() => onEdit(row)}>Edit</Button>
-                  <Button size="small" variant="outlined" color="error" sx={{ ml: 1 }} onClick={() => onDelete(row)}>Delete</Button>
+                  <Button
+                    size="small"
+                    sx={{ m: 1 }}
+                    variant="contained"
+                    onClick={() => onEdit(row)}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    color="error"
+                    sx={{ ml: 1 }}
+                    onClick={() => onDelete(row)}
+                  >
+                    Delete
+                  </Button>
                 </TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={8} align="center">No staff members found</TableCell>
+              <TableCell colSpan={10} align="center">
+                No staff members found
+              </TableCell>
             </TableRow>
           )}
         </TableBody>
@@ -44,4 +65,3 @@ export default function StaffList({ staff = [], onEdit, onDelete }) {
     </TableContainer>
   );
 }
-

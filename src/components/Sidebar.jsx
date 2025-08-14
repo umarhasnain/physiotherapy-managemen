@@ -7,7 +7,6 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
-import { BsChatLeftQuoteFill } from "react-icons/bs";
 import { FaFirstOrderAlt } from "react-icons/fa6";
 import { MdLogout } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
@@ -18,8 +17,8 @@ import BookOnlineIcon from '@mui/icons-material/BookOnline';
 import DashboardData from '@/app/(pages)/dashboard/dashboard-data/page';
 import Appointment from '@/app/(pages)/dashboard/appointments/page';
 import StaffPage from '@/app/(pages)/dashboard/staff/page';
-import PatientsManagement from '@/app/(pages)/dashboard/patients/page';
-import PatientsPage from '@/app/(pages)/dashboard/patients/page';
+import PT_Dashboard_MUI from './PT_Dashboard_MUI';
+import PT_Dashboard from './PT_Dashboard';
 
 const NAVIGATION = [
   { segment: 'dashboard', title: 'Dashboard', icon: <DashboardIcon /> },
@@ -51,11 +50,10 @@ function DemoPageContent({ pathname }) {
       case "/appointments":
         return <Appointment />;
       case "/patients":
-        return <PatientsPage />;
+        return <PT_Dashboard_MUI />;
       case "/users":
-        return <Reports />;
+        return <PT_Dashboard />;
       case "/signOut":
-        // Replace this with your custom sign-out logic if needed
         return <Typography>Signing out...</Typography>;
       default:
         return <Typography>Page Not Found</Typography>;
@@ -63,7 +61,6 @@ function DemoPageContent({ pathname }) {
   };
 
   if (pathname === '/signOut') {
-    // Just redirect or show message here if needed
     return (
       <Box sx={{ py: 4, textAlign: 'center' }}>
         <Typography variant="h6">You have been signed out.</Typography>
@@ -72,7 +69,7 @@ function DemoPageContent({ pathname }) {
   }
 
   return (
-    <Box sx={{ py: 4, display: 'flex', flexDirection: 'column',  textAlign: 'center' }}>
+    <Box sx={{ py: 4, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
       {renderComponent()}
     </Box>
   );
@@ -91,7 +88,18 @@ export default function DashboardLayoutBranding(props) {
       theme={demoTheme}
       window={demoWindow}
     >
-      <DashboardLayout>
+      <DashboardLayout
+        slotProps={{
+          sideNav: {
+            sx: {
+              "& .MuiDrawer-paper": { width: 80 }, // sidebar ki width fix
+            },
+          },
+          content: {
+            sx: { ml: "80px" }, // content margin sidebar ke equal
+          },
+        }}
+      >
         <DemoPageContent pathname={router.pathname} />
       </DashboardLayout>
     </AppProvider>
